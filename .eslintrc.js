@@ -6,7 +6,14 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  extends: ['airbnb', 'plugin:react/recommended', 'plugin:import/errors', 'plugin:import/warnings'],
+  extends: [
+    'airbnb',
+    'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'prettier',
+    'prettier/react',
+  ],
   plugins: ['compat'],
   rules: {
     'max-len': ['error', { code: 120, comments: 120 }],
