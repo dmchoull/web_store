@@ -23,7 +23,10 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn run lint-staged",
-      "pre-push": "yarn test && ./e2e.sh"
+      "pre-push": "yarn test && ./e2e.sh",
+      "post-merge": "yarnhook",
+      "post-checkout": "yarnhook",
+      "post-rewrite": "yarnhook"
     }
   },
   "lint-staged": {
@@ -62,11 +65,13 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "husky": "^1.0.0-rc.8",
-    "jest": "^23.0.1",
+    "jest": "^23.1.0",
     "jest-runner-eslint": "^0.6.0",
+    "jest-watch-typeahead": "^0.1.0",
     "lint-staged": "^7.1.2",
     "prettier": "^1.13.0",
     "react-testing-library": "^3.0.2",
-    "serve": "^7.2.0"
+    "serve": "^7.2.0",
+    "yarnhook": "^0.2.0"
   }
 }

@@ -19,4 +19,5 @@ module.exports = {
       testPathIgnorePatterns: ['/node_modules/', '__snapshots__'],
     },
   ],
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };
