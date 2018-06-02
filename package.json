@@ -9,7 +9,7 @@
     "start": "next start",
     "preexport": "yarn build",
     "export": "next export",
-    "serve": "serve out -p 8080",
+    "serve": "serve out --listen 8080",
     "test": "jest",
     "test:watch": "jest --watch --notify",
     "lint": "eslint pages __mocks__ cypress --ext .js --ext .jsx"
