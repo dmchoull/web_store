@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product renders the product attributes 1`] = `
+<div>
+  <span>
+    Apple - AirPods - White
+  </span>
+  <section>
+    <span>
+      Reg: 
+      159.99
+    </span>
+     – 
+    <span>
+      Cur: 
+      159.99
+    </span>
+  </section>
+</div>
+`;

@@ -4,6 +4,6 @@ describe('Home page', () => {
   });
 
   it('displays the main site content', () => {
-    cy.contains('Hello, world!').should('be.visible');
+    cy.contains('Top Products').should('be.visible');
   });
 });

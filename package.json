@@ -10,6 +10,7 @@
     "preexport": "yarn build",
     "export": "next export",
     "serve": "serve out --listen 8080",
+    "deploy": "now --public -e BB_API_KEY=@bb-api-key",
     "test": "jest",
     "test:watch": "jest --watch --notify",
     "lint": "eslint pages __mocks__ cypress --ext .js --ext .jsx"
@@ -44,6 +45,7 @@
   "dependencies": {
     "airbnb-prop-types": "^2.9.0",
     "axios": "^0.18.0",
+    "bestbuy": "^2.1.3",
     "next": "^6.0.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
