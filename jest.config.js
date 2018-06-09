@@ -12,7 +12,7 @@ module.exports = {
       testMatch: [
         '<rootDir>/__mocks__/**/*.js?(x)',
         '<rootDir>/__tests__/**/*.js?(x)',
-        '<rootDir>/componenets/**/*.js?(x)',
+        '<rootDir>/src/**/*.js?(x)',
         '<rootDir>/cypress/**/*.js?(x)',
         '<rootDir>/pages/**/*.js?(x)',
       ],
