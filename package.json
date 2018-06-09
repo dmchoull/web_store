@@ -57,6 +57,7 @@
     "babel-eslint": "^8.2.3",
     "babel-jest": "^23.0.1",
     "cypress": "^3.0.1",
+    "cz-conventional-changelog": "^2.1.0",
     "dom-testing-library": "^2.2.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -75,5 +76,10 @@
     "react-testing-library": "^3.0.2",
     "serve": "^8.0.0",
     "yarnhook": "^0.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
