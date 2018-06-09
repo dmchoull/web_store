@@ -23,6 +23,7 @@
   ],
   "husky": {
     "hooks": {
+      "commitmsg": "validate-commit-msg",
       "pre-commit": "yarn run lint-staged",
       "pre-push": "yarn test && ./e2e.sh",
       "post-merge": "yarnhook",
@@ -75,6 +76,7 @@
     "prettier": "^1.13.4",
     "react-testing-library": "^3.0.2",
     "serve": "^8.0.0",
+    "validate-commit-message": "^3.0.1",
     "yarnhook": "^0.2.0"
   },
   "config": {
