@@ -23,7 +23,7 @@
   ],
   "husky": {
     "hooks": {
-      "commitmsg": "validate-commit-msg",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "yarn run lint-staged",
       "pre-push": "yarn test && ./e2e.sh",
       "post-merge": "yarnhook",
@@ -54,6 +54,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.5",
     "babel-jest": "^23.0.1",
@@ -68,7 +70,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.10.0",
-    "husky": "^1.0.0-rc.8",
+    "husky": "^1.0.0-rc.9",
     "jest": "^23.1.0",
     "jest-runner-eslint": "^0.6.0",
     "jest-watch-typeahead": "^0.1.0",
@@ -76,7 +78,6 @@
     "prettier": "^1.13.4",
     "react-testing-library": "^4.0.0",
     "serve": "^9.0.0",
-    "validate-commit-message": "^3.0.1",
     "yarnhook": "^0.2.0"
   },
   "config": {
