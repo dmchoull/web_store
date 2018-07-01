@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { forbidExtraProps } from 'airbnb-prop-types';
-import { name, regularPrice, currentPrice } from '../models/product';
+import { name, regularPrice, salePrice } from '../models/product';
 
 const Product = ({ attributes }) => (
   <div>
     <span>{name(attributes)}</span>
     <section>
       <span>Reg: {regularPrice(attributes)}</span>&nbsp;–&nbsp;
-      <span>Cur: {currentPrice(attributes)}</span>
+      <span>Cur: {salePrice(attributes)}</span>
     </section>
   </div>
 );

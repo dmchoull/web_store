@@ -1,10 +1,10 @@
-// eslint-disable-next-line no-shadow
+/* eslint-disable no-shadow */
 const sku = ({ sku }) => sku;
 
-const name = ({ names }) => names.title;
+const name = ({ name }) => name;
 
-const currentPrice = ({ prices }) => prices.current;
+const salePrice = ({ salePrice }) => salePrice;
 
-const regularPrice = ({ prices }) => prices.regular;
+const regularPrice = ({ regularPrice }) => regularPrice;
 
-export { name, sku, currentPrice, regularPrice };
+export { name, sku, salePrice, regularPrice };

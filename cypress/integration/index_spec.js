@@ -4,6 +4,6 @@ describe('Home page', () => {
   });
 
   it('displays the main site content', () => {
-    cy.contains('Top Products').should('be.visible');
+    cy.contains('Daily Deals').should('be.visible');
   });
 });
