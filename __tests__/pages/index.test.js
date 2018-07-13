@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-testing-library';
-import 'dom-testing-library/extend-expect';
+import 'jest-dom/extend-expect';
 import bestbuy from 'bestbuy';
 import generate from '../../test/generate';
 import Index from '../../pages/index';
