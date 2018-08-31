@@ -4,8 +4,23 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
-    jest: true,
   },
+  overrides: [
+    {
+      files: ['*.test.js', 'test/**/*.js', '__mocks__/*.js'],
+      env: {
+        jest: true,
+      },
+      rules: {
+        'import/no-unresolved': [
+          'error',
+          {
+            ignore: ['^Test'],
+          },
+        ],
+      },
+    },
+  ],
   extends: [
     'airbnb',
     'plugin:react/recommended',

@@ -1,14 +1,15 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
-import bestbuy from 'bestbuy';
 import generate from '../../test/generate';
 import Index from '../../pages/index';
 
-jest.mock('bestbuy');
+jest.mock('../../src/integration/api', () => ({
+  fetchDeals: async () => ['product1', 'product2'],
+}));
 
 describe('Index', () => {
-  it('renders', () => {
+  it('renders products', () => {
     const product1 = generate.product({ name: 'Product 1' });
     const product2 = generate.product({ name: 'Product 2' });
 
@@ -19,16 +20,9 @@ describe('Index', () => {
   });
 
   describe('getInitialProps', () => {
-    it('returns best buy daily deals', async () => {
+    it('calls the fetchDeals api and returns products', async () => {
       const { products } = await Index.getInitialProps();
-
-      expect(bestbuy().products).toHaveBeenCalledWith('(offers.type=deal_of_the_day)', {
-        pageSize: 15,
-        show: 'sku,name,salePrice,regularPrice',
-        sort: 'bestSellingRank',
-      });
-
-      expect(products).toHaveLength(2);
+      expect(products).toEqual(['product1', 'product2']);
     });
   });
 });

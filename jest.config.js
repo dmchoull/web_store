@@ -4,6 +4,7 @@ module.exports = {
       displayName: 'frontend',
       moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\\?.+)?$': '<rootDir>/__mocks__/fileMock.js',
+        '^Test(.*)$': '<rootDir>/test$1',
       },
     },
     {

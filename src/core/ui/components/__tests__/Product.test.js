@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-testing-library';
-import generate from '../../../test/generate';
+import generate from 'Test/generate';
 import Product from '../Product';
 
 describe('Product', () => {

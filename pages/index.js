@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import bestbuy from 'bestbuy';
-import NavBar from '../src/components/NavBar';
-import Product from '../src/components/Product';
-import { sku } from '../src/models/product';
+import api from '../src/integration/api';
+import NavBar from '../src/core/ui/components/NavBar';
+import Product from '../src/core/ui/components/Product';
+import { sku } from '../src/adapters/product';
 
 const Index = ({ products }) => (
   <div>
@@ -46,16 +46,8 @@ Index.propTypes = {
 };
 
 Index.getInitialProps = async function getTrending() {
-  const bby = bestbuy(process.env.BB_API_KEY);
-  const data = await bby.products('(offers.type=deal_of_the_day)', {
-    pageSize: 15,
-    sort: 'bestSellingRank',
-    show: 'sku,name,salePrice,regularPrice',
-  });
-
-  return {
-    products: data.products,
-  };
+  const products = await api.fetchDeals();
+  return { products };
 };
 
 export default Index;
