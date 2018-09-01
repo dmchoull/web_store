@@ -1,4 +1,4 @@
-import bestbuy from 'bestbuy';
+const bestbuy = require('bestbuy');
 
 async function fetchDeals() {
   const bby = bestbuy(process.env.BB_API_KEY);
@@ -25,7 +25,7 @@ async function search(query) {
   return data.products;
 }
 
-export default {
+module.exports = {
   fetchDeals,
   search,
 };

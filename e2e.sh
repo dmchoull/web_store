@@ -2,13 +2,9 @@
 set -ev
 
 yarn build
-yarn export
+yarn start &
 
-set +e
-
-yarn serve &
-
-# wait for serve to start
+# wait for server to start
 while ! curl -s localhost:8080 >/dev/null; do
   sleep 1
 done

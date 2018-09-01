@@ -1,9 +1,9 @@
 import bestbuy from 'bestbuy';
-import api from '../api';
+import api from '../bestbuy-api';
 
 jest.mock('bestbuy');
 
-describe('api', () => {
+describe('bestbuy api', () => {
   describe('fetchDeals', () => {
     it('returns the top deals', async () => {
       const products = await api.fetchDeals();

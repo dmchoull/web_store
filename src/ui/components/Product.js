@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { forbidExtraProps } from 'airbnb-prop-types';
-import { name, regularPrice, salePrice } from '../../../adapters/product';
+import { name, regularPrice, salePrice } from '../../adapters/product';
 
 const Product = ({ attributes }) => (
   <div>

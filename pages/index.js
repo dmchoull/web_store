@@ -1,13 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import productRepository from '../src/core/repositories/product-repository';
-import NavBar from '../src/core/ui/components/NavBar';
-import Product from '../src/core/ui/components/Product';
+import axios from 'axios';
+import NavBar from '../src/ui/components/NavBar';
+import Product from '../src/ui/components/Product';
 import { sku } from '../src/adapters/product';
+
+// if (process.env.BASE_URL) {
+//   axios.defaults.baseURL = process.env.BASE_URL;
+// }
+
+async function search(query) {
+  const res = await axios.get(`/api/search?q=${query}`);
+  console.log(res.data.products);
+  return res.data.products;
+}
 
 const Index = ({ products }) => (
   <div>
     <NavBar />
+
+    <input
+      type="search"
+      onKeyDown={e => {
+        if (e.key === 'Enter') {
+          search(e.target.value);
+        }
+      }}
+    />
 
     <div className="content">
       <h2>Daily Deals</h2>
@@ -45,9 +64,10 @@ Index.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-Index.getInitialProps = async function getTrending() {
-  const products = await productRepository.fetchDeals();
-  return { products };
+Index.getInitialProps = async function getDailyDeals({ req }) {
+  const baseUrl = `http://${req.headers.host}`;
+  const res = await axios.get(`${baseUrl}/api/deals`, { credentials: 'same-origin' });
+  return { products: res.data.products };
 };
 
 export default Index;
