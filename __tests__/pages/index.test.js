@@ -4,7 +4,7 @@ import 'jest-dom/extend-expect';
 import generate from '../../test/generate';
 import Index from '../../pages/index';
 
-jest.mock('../../src/integration/api', () => ({
+jest.mock('../../src/core/repositories/product-repository', () => ({
   fetchDeals: async () => ['product1', 'product2'],
 }));
 

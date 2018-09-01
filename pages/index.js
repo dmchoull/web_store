@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import api from '../src/integration/api';
+import productRepository from '../src/core/repositories/product-repository';
 import NavBar from '../src/core/ui/components/NavBar';
 import Product from '../src/core/ui/components/Product';
 import { sku } from '../src/adapters/product';
@@ -46,7 +46,7 @@ Index.propTypes = {
 };
 
 Index.getInitialProps = async function getTrending() {
-  const products = await api.fetchDeals();
+  const products = await productRepository.fetchDeals();
   return { products };
 };
 
