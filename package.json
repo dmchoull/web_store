@@ -25,6 +25,7 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "yarn run lint-staged",
+      "post-commit": "git update-index --again",
       "pre-push": "yarn test && ./e2e.sh",
       "post-merge": "yarnhook",
       "post-checkout": "yarnhook",
