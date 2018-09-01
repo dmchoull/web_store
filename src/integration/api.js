@@ -11,6 +11,21 @@ async function fetchDeals() {
   return data.products;
 }
 
+async function search(query) {
+  const expandedQuery = query
+    .split(' ')
+    .map(keyword => `search=${keyword}`)
+    .join('&');
+
+  const bby = bestbuy(process.env.BB_API_KEY);
+  const data = await bby.products(`(${expandedQuery})`, {
+    show: 'sku,name,salePrice,regularPrice',
+  });
+
+  return data.products;
+}
+
 export default {
   fetchDeals,
+  search,
 };
