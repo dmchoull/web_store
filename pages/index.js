@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import searchRepo from '../src/repositories/search-repo';
 import dealRepo from '../src/repositories/deal-repo';
 import NavBar from '../src/ui/components/NavBar';
+import DailyDeals from '../src/components/DailyDeals';
 import Product from '../src/ui/components/Product';
 import { sku } from '../src/adapters/product';
 
@@ -71,23 +72,6 @@ class Index extends React.Component {
     );
   }
 }
-
-const DailyDeals = ({ products }) => (
-  <>
-    <h2>Daily Deals</h2>
-    <ol>
-      {products.map(product => (
-        <li key={sku(product)}>
-          <Product attributes={product} />
-        </li>
-      ))}
-    </ol>
-  </>
-);
-
-DailyDeals.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 const SearchResults = ({ results }) => (
   <>
