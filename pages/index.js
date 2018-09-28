@@ -4,8 +4,7 @@ import searchRepo from '../src/repositories/search-repo';
 import dealRepo from '../src/repositories/deal-repo';
 import NavBar from '../src/ui/components/NavBar';
 import DailyDeals from '../src/components/DailyDeals';
-import Product from '../src/ui/components/Product';
-import { sku } from '../src/adapters/product';
+import SearchResults from '../src/components/SearchResults';
 
 class Index extends React.Component {
   static propTypes = {
@@ -85,22 +84,5 @@ class Index extends React.Component {
     );
   }
 }
-
-const SearchResults = ({ results }) => (
-  <>
-    <h2>{results.length} Results</h2>
-    <ol>
-      {results.map(result => (
-        <li key={sku(result)}>
-          <Product attributes={result} />
-        </li>
-      ))}
-    </ol>
-  </>
-);
-
-SearchResults.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default Index;
