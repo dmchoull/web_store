@@ -38,8 +38,10 @@ class Index extends React.Component {
         <NavBar />
 
         <input
+          className="search-bar"
           type="search"
           data-testid="search"
+          placeholder="What are you looking for?"
           onKeyDown={async e => {
             if (e.key === 'Enter') {
               const results = await searchRepo().get(e.target.value);
@@ -47,6 +49,17 @@ class Index extends React.Component {
             }
           }}
         />
+
+        <style jsx>{`
+          .search-bar {
+            -webkit-appearance: none;
+            width: 100%;
+            border: 1px solid #d3d3d3;
+            padding: 12px 12px 12px 50px;
+            line-height: 24px;
+            font-size: 14px;
+          }
+        `}</style>
 
         <div className="content">{this.renderContent()}</div>
 
