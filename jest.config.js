@@ -1,7 +1,7 @@
 module.exports = {
   projects: [
     {
-      displayName: 'frontend',
+      displayName: 'tests',
       moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\\?.+)?$': '<rootDir>/__mocks__/fileMock.js',
         '^Test(.*)$': '<rootDir>/test$1',
