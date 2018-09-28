@@ -1,50 +1,79 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import searchRepo from '../src/repositories/search-repo';
 import dealRepo from '../src/repositories/deal-repo';
 import NavBar from '../src/ui/components/NavBar';
 import Product from '../src/ui/components/Product';
 import { sku } from '../src/adapters/product';
 
-const Index = ({ products }) => (
-  <div>
-    <NavBar />
+class Index extends React.Component {
+  static propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
 
-    <div className="content">
-      <DailyDeals products={products} />
-    </div>
+  static getInitialProps = async function getDailyDeals({ req }) {
+    const baseUrl = `http://${req.headers.host}`; // TODO: https
+    return { products: await dealRepo(baseUrl).get() };
+  };
 
-    <style jsx global>{`
-      body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        color: #212121;
-        font-family: 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: 0.02em;
-      }
-    `}</style>
+  state = {
+    results: [],
+  };
 
-    <style jsx>{`
-      .content {
-        padding: 0 50px;
-      }
-    `}</style>
-  </div>
-);
+  renderContent() {
+    const { results } = this.state;
 
-Index.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+    if (results.length > 0) {
+      return <SearchResults results={results} />;
+    }
 
-Index.getInitialProps = async function getDailyDeals({ req }) {
-  const baseUrl = `http://${req.headers.host}`; // TODO: https
-  return { products: await dealRepo(baseUrl).get() };
-};
+    const { products } = this.props;
+    return <DailyDeals products={products} />;
+  }
+
+  render() {
+    return (
+      <div>
+        <NavBar />
+
+        <input
+          type="search"
+          data-testid="search"
+          onKeyDown={async e => {
+            if (e.key === 'Enter') {
+              const results = await searchRepo().get(e.target.value);
+              this.setState({ results });
+            }
+          }}
+        />
+
+        <div className="content">{this.renderContent()}</div>
+
+        <style jsx global>{`
+          body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #212121;
+            font-family: 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: 0.02em;
+          }
+        `}</style>
+
+        <style jsx>{`
+          .content {
+            padding: 0 50px;
+          }
+        `}</style>
+      </div>
+    );
+  }
+}
 
 const DailyDeals = ({ products }) => (
-  <React.Fragment>
+  <>
     <h2>Daily Deals</h2>
     <ol>
       {products.map(product => (
@@ -53,11 +82,28 @@ const DailyDeals = ({ products }) => (
         </li>
       ))}
     </ol>
-  </React.Fragment>
+  </>
 );
 
 DailyDeals.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+const SearchResults = ({ results }) => (
+  <>
+    <h2>{results.length} Results</h2>
+    <ol>
+      {results.map(result => (
+        <li key={sku(result)}>
+          <Product attributes={result} />
+        </li>
+      ))}
+    </ol>
+  </>
+);
+
+SearchResults.propTypes = {
+  results: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Index;
