@@ -2735,7 +2735,7 @@ dom-testing-library@^3.1.0:
     pretty-format "^22.4.3"
     wait-for-expect "^0.4.0"
 
-dom-testing-library@^3.6.0:
+dom-testing-library@^3.5.0, dom-testing-library@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.6.0.tgz#e5598fae9477f3918e22aee44f2262727203b5bd"
   dependencies:
@@ -4526,12 +4526,13 @@ jest-docblock@^23.2.0:
   dependencies:
     detect-newline "^2.1.0"
 
-jest-dom@^1.12.1:
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-1.12.1.tgz#4880c91e39e9c737188b5c952740df8912635248"
+jest-dom@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-2.0.0.tgz#e0da168a2fb94316ca1e057399353d81ec91b759"
   dependencies:
     chalk "^2.4.1"
     css "^2.2.3"
+    dom-testing-library "^3.5.0"
     jest-diff "^22.4.3"
     jest-matcher-utils "^22.4.3"
     pretty-format "^23.0.1"
